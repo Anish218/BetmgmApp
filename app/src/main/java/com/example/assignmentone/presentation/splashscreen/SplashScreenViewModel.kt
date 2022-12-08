@@ -1,4 +1,4 @@
-package com.example.assignmentone.presentation.viewModel
+package com.example.assignmentone.presentation.splashscreen
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG

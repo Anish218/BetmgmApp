@@ -22,10 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.assignmentone.R
 //import com.example.assignmentone.presentation.ComposeView.UserCard
-import com.example.assignmentone.presentation.ComposeView.users
 
 @Composable
-fun AppTopNavigation(navController: NavController){
+fun AppTopNavigation() {
     Column(
 
         Modifier
@@ -49,8 +48,9 @@ fun AppTopNavigation(navController: NavController){
                     .padding(start = 125.dp),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.Black,
-                    contentColor = Color.White),
-                border = BorderStroke(1.dp,Color.White),
+                    contentColor = Color.White
+                ),
+                border = BorderStroke(1.dp, Color.White),
                 shape = RoundedCornerShape(55.dp),
 
 
@@ -66,7 +66,8 @@ fun AppTopNavigation(navController: NavController){
                     .padding(start = 5.dp),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = colorResource(id = com.example.assignmentone.R.color.gold),
-                    contentColor = Color.Black),
+                    contentColor = Color.Black
+                ),
                 shape = RoundedCornerShape(55.dp),
 
                 onClick = { /*TODO*/ }
@@ -75,57 +76,11 @@ fun AppTopNavigation(navController: NavController){
             }
 
 
-
         }
-        Spacer(modifier = Modifier.height(10.dp))
-        Row() {
-            Card(
-                modifier = Modifier.height(30.dp),
-                backgroundColor = colorResource(id = R.color.dark_gray),
-                shape = RoundedCornerShape(20.dp)
-            ) {
-                Image(
-                    modifier = Modifier.padding(start = 3.dp),
-                    painter = painterResource(id = R.drawable.ic_baseline_dehaze_24 ),
-                    contentDescription = ""
-                )
-                Text(
-                    modifier = Modifier
-                        .padding(start = 28.dp, top = 5.dp)
-                        .width(50.dp),
-                    color = Color.White,
-                    text = "sports"
-                )
-            }
-            Spacer(modifier = Modifier.width(20.dp))
-            Card(
-                modifier = Modifier.height(30.dp),
-                backgroundColor = colorResource(id = R.color.dark_gray),
-                shape = RoundedCornerShape(20.dp)
-            ) {
-                Image(
+        Spacer(modifier = Modifier.height(5.dp))
 
-                    painter = painterResource(id = R.drawable.ic_baseline_search_24 ),
-                    contentDescription = ""
-                )
-                Text(modifier = Modifier
-                    .padding(start = 25.dp)
-                    .width(270.dp),
-                    color = Color.White,
-                    text = "search")
-            }
-        }
-        Spacer(modifier = Modifier.height(10.dp))
-        LazyRow{
-            items(users){ user ->
-                GamesCard()
-
-
-            }
-        }
 
     }
-
 }
 
 @Composable

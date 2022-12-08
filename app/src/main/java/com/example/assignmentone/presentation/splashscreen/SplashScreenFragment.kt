@@ -1,4 +1,4 @@
-package com.example.assignmentone.presentation.Fragments
+package com.example.assignmentone.presentation.splashscreen
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
@@ -10,25 +10,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.viewModels
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.example.assignmentone.MainActivity
 import com.example.assignmentone.R
-import com.example.assignmentone.di.DependencyModule
-import com.example.assignmentone.domain.repository.DynaconRepository
-import com.example.assignmentone.domain.usecase.dynaconUseCase.FetchDynaconDataUseCase
 import com.example.assignmentone.presentation.SplashScreenView
-import com.example.assignmentone.presentation.viewModel.SplashScreenViewModel
-import com.example.assignmentone.presentation.viewModel.SplashScreenViewModelFactory
+import com.example.assignmentone.presentation.viewModel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import javax.inject.Inject
+
 @AndroidEntryPoint
 class SplashScreenFragment : Fragment() {
+    private val mainViewModel:MainViewModel by viewModels()
 
     private val splashScreenViewModel: SplashScreenViewModel by viewModels()
 
@@ -37,6 +29,7 @@ class SplashScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return ComposeView(requireContext()).apply { setContent {
             SplashScreenView(
 
@@ -47,6 +40,7 @@ class SplashScreenFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         Log.i(TAG, "000000:${splashScreenViewModel.dynaconResponseObserver} ")
         Log.i(TAG, "onViewCreated: +++++++++++")
@@ -65,14 +59,24 @@ class SplashScreenFragment : Fragment() {
 //            splashscreenviewmodel..observe(viewLifecycleOwner, Observer{
 //                Log.i("dynocon", it.Entries.toString())
 //            })
+            //mainViewModel.changeSplashScreeenLoadState()
+            //println("after state change"+mainViewModel.isSplashScreenLoaded.value)
 
             findNavController().navigate(R.id.action_splashScreenFragment_to_lobbyFragment)
 
 
             //           findNavController().popBackStack(R.id.firstFragment,false)
 
-        }, 5000)
+        }, 7000)
 
+
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mainViewModel.splashScreenLoaded.value=false
+        (activity as MainActivity).changeTopBarAndBottomBarStatusToVisible()
 
     }
 

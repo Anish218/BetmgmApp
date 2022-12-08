@@ -6,7 +6,7 @@
     app:startDestination="@id/splashScreenFragment">
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.example.assignmentone.presentation.Fragments.SplashScreenFragment"
+        android:name="com.example.assignmentone.presentation.splashscreen.SplashScreenFragment"
         android:label="splashScreenFragment">
         <action
             android:id="@+id/action_splashScreenFragment_to_lobbyFragment"
@@ -14,7 +14,38 @@
     </fragment>
     <fragment
         android:id="@+id/lobbyFragment"
-        android:name="com.example.assignmentone.presentation.Fragments.LobbyFragment"
+        android:name="com.example.assignmentone.presentation.lobbyscreen.LobbyFragment"
         android:label="fragment_lobby"
-        tools:layout="@layout/fragment_lobby" />
+        tools:layout="@layout/fragment_lobby" >
+        <action
+            android:id="@+id/action_lobbyFragment_to_sportsFragment"
+            app:destination="@id/sportsFragment" />
+        <action
+            android:id="@+id/action_lobbyFragment_to_casinoFragment"
+            app:destination="@id/casinoFragment" />
+        <action
+            android:id="@+id/action_lobbyFragment_to_promotionFragment"
+            app:destination="@id/promotionFragment" />
+        <action
+            android:id="@+id/action_lobbyFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.assignmentone.presentation.accountscreen.AccountFragment"
+        android:label="AccountFragment" />
+    <fragment
+        android:id="@+id/casinoFragment"
+        android:name="com.example.assignmentone.presentation.casinoscreen.CasinoFragment"
+        android:label="fragment_casino"
+        tools:layout="@layout/fragment_casino" />
+    <fragment
+        android:id="@+id/sportsFragment"
+        android:name="com.example.assignmentone.presentation.sportsscreen.SportsScreenFragment"
+        android:label="fragment_sports"
+        tools:layout="@layout/fragment_sports" />
+    <fragment
+        android:id="@+id/promotionFragment"
+        android:name="com.example.assignmentone.presentation.promotionscreen.PromotionFragment"
+        android:label="PromotionFragment" />
 </navigation>

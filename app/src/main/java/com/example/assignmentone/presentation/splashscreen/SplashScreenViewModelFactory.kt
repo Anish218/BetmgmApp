@@ -1,9 +1,7 @@
-package com.example.assignmentone.presentation.viewModel
+package com.example.assignmentone.presentation.splashscreen
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.assignmentone.domain.repository.DynaconRepository
 import com.example.assignmentone.domain.usecase.dynaconUseCase.FetchDynaconDataUseCase
 
 class SplashScreenViewModelFactory(private val useCase: FetchDynaconDataUseCase):

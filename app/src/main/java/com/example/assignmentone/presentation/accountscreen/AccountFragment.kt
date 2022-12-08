@@ -1,17 +1,14 @@
-package com.example.assignmentone.presentation.Fragments
+package com.example.assignmentone.presentation.accountscreen
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
-import androidx.navigation.fragment.findNavController
-import com.example.assignmentone.R
-import com.example.assignmentone.presentation.ComposeView.LobbyScreenView
+import androidx.fragment.app.Fragment
+import com.example.assignmentone.presentation.ComposeView.AccountScreenView
 
-
-class LobbyFragment : Fragment() {
+class AccountFragment:Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,13 +21,9 @@ class LobbyFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return ComposeView(requireContext()).apply {
-            setContent {
-                LobbyScreenView()
+            setContent{
+                AccountScreenView()
             }
         }
     }
-
-
-
-
 }

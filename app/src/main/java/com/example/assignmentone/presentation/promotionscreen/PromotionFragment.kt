@@ -1,19 +1,14 @@
-package com.example.assignmentone.presentation.Fragments
+package com.example.assignmentone.presentation.promotionscreen
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
-import com.example.assignmentone.R
-import com.example.assignmentone.presentation.ComposeView.CasinoScreenView
+import androidx.fragment.app.Fragment
+import com.example.assignmentone.presentation.ComposeView.PromotionScreenView
 
-
-
-class CasinoFragment : Fragment() {
-
-
+class PromotionFragment:Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,10 +21,8 @@ class CasinoFragment : Fragment() {
         // Inflate the layout for this fragment
         return ComposeView(requireContext()).apply {
             setContent{
-                CasinoScreenView()
+                PromotionScreenView()
             }
         }
     }
-
-
 }
