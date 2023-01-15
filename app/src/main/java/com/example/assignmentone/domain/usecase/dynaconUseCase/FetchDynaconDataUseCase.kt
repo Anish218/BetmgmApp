@@ -1,23 +1,16 @@
 package com.example.assignmentone.domain.usecase.dynaconUseCase
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import com.example.assignmentone.common.Resource
-import com.example.assignmentone.data.dto.DynaconResponse
+import com.example.assignmentone.data.dto.dynaconresponse.DynaconResponse
 import com.example.assignmentone.domain.model.DynaconRequest
 import com.example.assignmentone.domain.model.EntriesRequest
 import com.example.assignmentone.domain.repository.DynaconRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import retrofit2.HttpException
-import java.io.IOException
-import java.text.MessageFormat
 import javax.inject.Inject
 
 class FetchDynaconDataUseCase @Inject constructor(private val repository: DynaconRepository) {
 
 
-     suspend fun postDynaconData(): DynaconResponse {
+     suspend fun postDynaconData(): Resource<DynaconResponse> {
 
         val headers = mapOf(
             "x-bwin-accessId" to "NWE1MzNhNjMtMTc5NC00ZTU2LWFkNmMtMTJiMjUyZDk5ZTVl",
@@ -30,7 +23,9 @@ class FetchDynaconDataUseCase @Inject constructor(private val repository: Dynaco
         val dynaconRequest =DynaconRequest(entriesArray)
 
 
-        return repository.getDynaconData(headers,dynaconRequest)
+       return repository.getDynaconData(headers,dynaconRequest)
+
+
     }
 }
 

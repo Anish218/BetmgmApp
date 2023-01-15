@@ -8,7 +8,7 @@ import com.example.assignmentone.R
 sealed class NavItem(
     @StringRes val title: Int,
     @DrawableRes val icon: Int,
-    val navRoute: String
+    val navRoute: Int
 ) {
     object Sports : NavItem(R.string.sports, R.drawable.ic_baseline_sports_esports_24, NAV_SPORTS)
     object Casino : NavItem(R.string.casino, R.drawable.ic_baseline_casino_24, NAV_CASINO)

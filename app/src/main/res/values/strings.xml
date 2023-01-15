@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">AssignmentOne</string>
+    <string name="app_name">BetMgm</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="sports">sports</string>
+    <string name="sports">Sports</string>
     <string name="casino">Casino</string>
-    <string name="promotions">promotions</string>
-    <string name="account">account</string>
+    <string name="promotions">Promotions</string>
+    <string name="account">Account</string>
     <string name="title_activity_splash_screen_view">SplashScreenView</string>
 </resources>

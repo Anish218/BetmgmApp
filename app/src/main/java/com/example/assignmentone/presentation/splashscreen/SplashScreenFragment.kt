@@ -1,22 +1,25 @@
 package com.example.assignmentone.presentation.splashscreen
 
 import android.content.ContentValues.TAG
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.assignmentone.MainActivity
 import com.example.assignmentone.R
 import com.example.assignmentone.presentation.SplashScreenView
 import com.example.assignmentone.presentation.viewModel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class SplashScreenFragment : Fragment() {
@@ -33,8 +36,8 @@ class SplashScreenFragment : Fragment() {
         return ComposeView(requireContext()).apply { setContent {
             SplashScreenView(
 
-                navController = NavController(requireContext())
-            )
+                splashScreenViewModel,::exitApp)
+
         } }
 
     }
@@ -47,7 +50,28 @@ class SplashScreenFragment : Fragment() {
         splashScreenViewModel.dynaconResponseObserver.observeForever {
             Log.i(TAG, "dynacon response: ${it.Entries} ")
         }
-        Log.i(TAG, "xxxxxxxxx: ${splashScreenViewModel.getDynaconData().toString()}")
+        splashScreenViewModel.siteCoreResponseObserver.observeForever {
+            Log.i(TAG, "sitecore response: ${it.Item} ")
+        }
+        splashScreenViewModel.isDynaconApiSuccess.observeForever {
+            if(it==false){
+
+            }
+        }
+        val connMgr = activity?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        val networkInfo = connMgr.activeNetworkInfo
+
+        if (networkInfo != null && networkInfo.isConnected) {
+            // fetch data
+            splashScreenViewModel.callDynaconAndSiteCoreApi()
+            splashScreenViewModel.changeNetworkState(true)
+
+        } else {
+            // display error
+            splashScreenViewModel.changeNetworkState(false)
+
+        }
 
 //        Log.i(TAG, "onViewCreated: ${dynaconApiUsecase.invoke()}")
         Handler().postDelayed({
@@ -61,8 +85,16 @@ class SplashScreenFragment : Fragment() {
 //            })
             //mainViewModel.changeSplashScreeenLoadState()
             //println("after state change"+mainViewModel.isSplashScreenLoaded.value)
-
+           if(splashScreenViewModel.isDynaconApiSuccess.value==false|| splashScreenViewModel.isNetworkConnected.value==false){
+               println("@@@@")
+               //println(findNavController().currentBackStackEntry)
+               //findNavController().popBackStack()
+            //println(findNavController().currentBackStackEntry)
+               (activity as? MainActivity)?.finish()
+           }
+            else
             findNavController().navigate(R.id.action_splashScreenFragment_to_lobbyFragment)
+
 
 
             //           findNavController().popBackStack(R.id.firstFragment,false)
@@ -76,9 +108,15 @@ class SplashScreenFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         mainViewModel.splashScreenLoaded.value=false
-        (activity as MainActivity).changeTopBarAndBottomBarStatusToVisible()
+        (activity as? MainActivity)?.changeTopBarAndBottomBarStatusToVisible()
+
 
     }
+    fun exitApp(){
+        println("exitapp")
+        (activity as? MainActivity)?.finish()
+    }
+
 
 
 

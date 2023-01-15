@@ -33,7 +33,11 @@
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.example.assignmentone.presentation.accountscreen.AccountFragment"
-        android:label="AccountFragment" />
+        android:label="AccountFragment" >
+        <action
+            android:id="@+id/action_accountFragment_to_lobbyFragment"
+            app:destination="@id/lobbyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/casinoFragment"
         android:name="com.example.assignmentone.presentation.casinoscreen.CasinoFragment"
@@ -43,9 +47,42 @@
         android:id="@+id/sportsFragment"
         android:name="com.example.assignmentone.presentation.sportsscreen.SportsScreenFragment"
         android:label="fragment_sports"
-        tools:layout="@layout/fragment_sports" />
+        tools:layout="@layout/fragment_sports" >
+        <action
+            android:id="@+id/action_sportsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_sportsFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_sportsFragment_to_searchSportFragment"
+            app:destination="@id/searchSportFragment" />
+    </fragment>
     <fragment
         android:id="@+id/promotionFragment"
         android:name="com.example.assignmentone.presentation.promotionscreen.PromotionFragment"
         android:label="PromotionFragment" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.assignmentone.presentation.loginscreen.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_sportsFragment"
+            app:destination="@id/sportsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.assignmentone.presentation.registerscreen.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_sportsFragment"
+            app:destination="@id/sportsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchSportFragment"
+        android:name="com.example.assignmentone.presentation.searchsportsscreen.SearchSportFragment"
+        android:label="fragment_search_sport"
+        tools:layout="@layout/fragment_search_sport" />
 </navigation>

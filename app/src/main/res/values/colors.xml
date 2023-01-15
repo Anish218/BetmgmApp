@@ -10,4 +10,7 @@
     <color name="gold">#c2a261</color>
     <color name="dark_gold">#54462b</color>
     <color name="dark_gray">#373837</color>
+    <color name="blue">#0065FE</color>
+    <color name="dull_gold">#f7f0be</color>
+    <color name="dull_gray">#f2f2ed</color>
 </resources>
